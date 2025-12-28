@@ -106,6 +106,7 @@ pandas-global-economic-indicators-analysis/
 │   └── index.html          # Interactive dashboard (GitHub Pages)
 │
 ├── main.py                 # End-to-end pipeline execution
+├── requirements.txt 
 └── README.md
 ```
 
