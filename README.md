@@ -205,7 +205,7 @@ $$\text{GDP Growth}_t < 0$$
 **Explanation:** Counts the number of years in which an economy experienced contraction.  
 Used as an indicator of economic vulnerability.
 
-
+---
 ## 🧭 Conclusion
 
 This project demonstrates how **time-series analysis and statistical feature engineering** can be used to extract meaningful economic insights without relying on complex models.
