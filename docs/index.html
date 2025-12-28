@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Global Economic Indicators Analysis</title>
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #FAFEFE;
+            color: #2F4F4F;
+        }
+
+        h1, h2 {
+            color: #3E7C7C;
+        }
+
+        .section {
+            margin-bottom: 70px;
+        }
+
+        .description {
+            max-width: 900px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🌍 Global Economic Indicators Analysis</h1>
+
+<p class="description">
+This project explores global and country-level economic indicators using time-series analysis.
+The analysis focuses on long-term trends, growth dynamics, and economic stability across countries.
+</p>
+
+<!-- ================================================= -->
+<!-- Global Map -->
+<!-- ================================================= -->
+<div class="section">
+    <h2>🌐 Global GDP Distribution</h2>
+    <p class="description">
+        The map below shows the average GDP levels across countries.
+        Darker turquoise tones indicate higher average GDP values.
+    </p>
+
+    <div id="gdp-map" style="width:100%; height:500px;"></div>
+</div>
+
+<!-- ================================================= -->
+<!-- Global Trends -->
+<!-- ================================================= -->
+<div class="section">
+    <h2>📈 Global Trends Over Time</h2>
+
+    <img src="../outputs/png/global_inflation_trend.png" alt="Global Inflation Trend">
+    <img src="../outputs/png/global_gdp_growth_trend.png" alt="Global GDP Growth Trend">
+</div>
+
+<!-- ================================================= -->
+<!-- Country Comparison -->
+<!-- ================================================= -->
+<div class="section">
+    <h2>🏳️ Country Comparison</h2>
+
+    <img src="../outputs/png/top_countries_avg_gdp.png" alt="Top Countries by GDP">
+    <img src="../outputs/png/crisis_years_by_country.png" alt="Crisis Years by Country">
+</div>
+
+<!-- ================================================= -->
+<!-- Case Study -->
+<!-- ================================================= -->
+<div class="section">
+    <h2>🔍 Country Case Study</h2>
+
+    <img src="../outputs/png/country_gdp_trend_TR.png" alt="Country GDP Trend">
+    <img src="../outputs/png/country_inflation_trend_TR.png" alt="Country Inflation Trend">
+</div>
+
+<!-- ================================================= -->
+<!-- Plotly Map Script (CORRECT WAY) -->
+<!-- ================================================= -->
+<script>
+    Plotly.d3.csv("../outputs/csv/country_summary.csv", function (err, rows) {
+
+        const locations = [];
+        const values = [];
+        const hoverText = [];
+
+        rows.forEach(row => {
+            const country = row.country_name;
+            const gdpRaw = row.avg_gdp;
+
+            if (country && gdpRaw) {
+                const gdp = Number(
+                    gdpRaw
+                        .toString()
+                        .replace(/,/g, "")
+                );
+
+                if (!isNaN(gdp) && gdp > 0) {
+                    locations.push(country);
+                    values.push(Math.log10(gdp)); // 🔥 LOG SCALE
+                    hoverText.push(
+                        country +
+                        "<br>Average GDP: " +
+                        gdp.toLocaleString()
+                    );
+                }
+            }
+        });
+
+        const data = [{
+            type: "choropleth",
+            locationmode: "country names",
+            locations: locations,
+            z: values,
+            text: hoverText,
+            hoverinfo: "text",
+            colorscale: [
+                [0, "#E6F2F2"],
+                [0.35, "#BFE4E4"],
+                [0.65, "#9ED6D6"],
+                [1, "#5FA8A8"]
+            ],
+            marker: {
+                line: {
+                    color: "#FFFFFF",
+                    width: 0.5
+                }
+            },
+            colorbar: {
+                title: "Average GDP (log scale)",
+                tickvals: [10, 11, 12, 13],
+                ticktext: ["10B", "100B", "1T", "10T"]
+            }
+        }];
+
+        const layout = {
+            geo: {
+                showframe: false,
+                showcoastlines: false,
+                projection: { type: "natural earth" }
+            },
+            margin: { t: 0, b: 0 }
+        };
+
+        Plotly.newPlot("gdp-map", data, layout, { responsive: true });
+    });
+</script>
+
+
+
+
+</body>
+</html>
