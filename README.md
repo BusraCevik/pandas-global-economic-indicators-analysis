@@ -147,14 +147,14 @@ Below are the core calculations used throughout the project, along with their ma
 
 **Formula:**
 
-$$
+$
 \text{GDP Growth}_t
 =
 \left(
 \frac{\text{GDP}_t - \text{GDP}_{t-1}}{\text{GDP}_{t-1}}
 \right)
 \times 100
-$$
+$
 
 **Explanation:**  
 Measures how much a country’s economy has grown or contracted compared to the previous year.  
@@ -166,11 +166,11 @@ Negative values indicate economic contraction.
 
 **Formula:**
 
-$$
+$
 \text{Inflation Change}_t
 =
 \text{Inflation}_t - \text{Inflation}_{t-1}
-$$
+$
 
 **Explanation:**  
 Captures short-term inflation shocks and sudden price-level changes.
@@ -181,13 +181,13 @@ Captures short-term inflation shocks and sudden price-level changes.
 
 **Formula:**
 
-$$
+$
 \text{Rolling Average}_t
 =
 \frac{1}{N}
 \sum_{i=0}^{N-1}
 X_{t-i}
-$$
+$
 
 **Explanation:**  
 Smooths short-term fluctuations to reveal long-term trends.  
@@ -199,13 +199,13 @@ Used for both GDP and inflation.
 
 **Formula:**
 
-$$
+$
 \text{Mean GDP Growth}
 =
 \frac{1}{N}
 \sum_{i=1}^{N}
 \text{GDP Growth}_{t-i}
-$$
+$
 
 **Explanation:**  
 Represents recent economic performance rather than historical averages.  
@@ -217,7 +217,7 @@ Used to assess current economic momentum.
 
 **Formula:**
 
-$$
+$
 \text{GDP Volatility}
 =
 \sqrt{
@@ -227,7 +227,7 @@ $$
 \text{GDP}_i - \overline{\text{GDP}}
 \right)^2
 }
-$$
+$
 
 **Explanation:**  
 Measures how unstable or volatile an economy is over time.  
@@ -239,9 +239,9 @@ Higher values indicate stronger economic fluctuations.
 **Definition:**  
 A year is classified as a **crisis year** if:
 
-$$
+$
 \text{GDP Growth}_t < 0
-$$
+$
 
 **Explanation:**  
 Counts the number of years in which an economy experienced contraction.  
