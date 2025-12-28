@@ -24,7 +24,7 @@ The project provides:
 
 ## 📊 Dataset
 
-The dataset contains country-level macroeconomic indicators measured annually.
+[Global Economic Indicators Dataset](https://www.kaggle.com/datasets/tanishksharma9905/global-economic-indicators-20102025) contains country-level macroeconomic indicators measured annually.
 
 **Key indicators include:**
 - GDP (Current USD)
@@ -46,19 +46,36 @@ The dataset contains country-level macroeconomic indicators measured annually.
 
 ### 🌍 Global Economic Overview
 - Global inflation trend over time  
-- Global GDP growth trend with recession indicators  
+![](outputs/png/global_inflation_trend.png)
+
+
+- Global GDP growth trend with recession indicators
+- ![](outputs/png/global_gdp_growth_trend.png)
 
 ### 🌎 Country Comparison
-- Top countries by average GDP  
-- Countries with the highest number of crisis years  
+- Top countries by average GDP
+- ![](outputs/png/top_countries_avg_gdp.png)
+
+
+- Countries with the highest number of crisis years
+- ![](outputs/png/crisis_years_by_country.png)
 
 ### 🔍 Country Case Study
 - GDP vs rolling average for a selected country  
-- Inflation vs rolling average for a selected country  
+- ![](outputs/png/country_gdp_trend_TR.png)
+
+
+- Inflation vs rolling average for a selected country
+- ![](outputs/png/country_inflation_trend_TR.png)
+
+
+- Interactive Dashboard Demo
+- ![](docs/demo.gif)
+
 
 ### 🌐 Interactive Dashboard
-🖱️ **Live Dashboard:**  
-https://busracevik.github.io/pandas-global-economic-indicators-analysis/index.html
+🖱️ <a href="https://busracevik.github.io/pandas-global-economic-indicators-analysis/index.html" target="_blank">View Interactive Dashboard</a>
+
 
 ---
 
@@ -78,10 +95,12 @@ pandas-global-economic-indicators-analysis/
 │
 ├── src/
 │   ├── data_preparation.py
+│   ├── animated_map.py
 │   ├── economic_analysis.py
 │   └── visualization.py
 │
 ├── docs/
+│   ├── demo.gif
 │   └── index.html          # Interactive dashboard (GitHub Pages)
 │
 ├── main.py                 # End-to-end pipeline execution
@@ -122,13 +141,18 @@ Below are the core calculations used throughout the project, along with their ma
 
 ---
 
-### 1️⃣ GDP Growth Rate (Year-over-Year)
+### GDP Growth Rate (Year-over-Year)
 
 **Formula:**
 
-\[
-GDP\_Growth_t = \frac{GDP_t - GDP_{t-1}}{GDP_{t-1}} \times 100
-\]
+$$
+\text{GDP Growth}_t
+=
+\left(
+\frac{\text{GDP}_t - \text{GDP}_{t-1}}{\text{GDP}_{t-1}}
+\right)
+\times 100
+$$
 
 **Explanation:**  
 Measures how much a country’s economy has grown or contracted compared to the previous year.  
@@ -136,26 +160,32 @@ Negative values indicate economic contraction.
 
 ---
 
-### 2️⃣ Inflation Change Rate
+### Inflation Change Rate
 
 **Formula:**
 
-\[
-Inflation\_Change_t = Inflation_t - Inflation_{t-1}
-\]
+$$
+\text{Inflation Change}_t
+=
+\text{Inflation}_t - \text{Inflation}_{t-1}
+$$
 
 **Explanation:**  
 Captures short-term inflation shocks and sudden price-level changes.
 
 ---
 
-### 3️⃣ Rolling Average (Trend Indicator)
+### Rolling Average (Trend Indicator)
 
 **Formula:**
 
-\[
-RollingAvg_t = \frac{1}{N} \sum_{i=0}^{N-1} X_{t-i}
-\]
+$$
+\text{Rolling Average}_t
+=
+\frac{1}{N}
+\sum_{i=0}^{N-1}
+X_{t-i}
+$$
 
 **Explanation:**  
 Smooths short-term fluctuations to reveal long-term trends.  
@@ -163,13 +193,17 @@ Used for both GDP and inflation.
 
 ---
 
-### 4️⃣ Mean GDP Growth (Last N Years)
+### Mean GDP Growth (Last N Years)
 
 **Formula:**
 
-\[
-MeanGrowth = \frac{1}{N} \sum_{i=1}^{N} GDP\_Growth_{t-i}
-\]
+$$
+\text{Mean GDP Growth}
+=
+\frac{1}{N}
+\sum_{i=1}^{N}
+\text{GDP Growth}_{t-i}
+$$
 
 **Explanation:**  
 Represents recent economic performance rather than historical averages.  
@@ -177,47 +211,42 @@ Used to assess current economic momentum.
 
 ---
 
-### 5️⃣ GDP Volatility (Economic Stability)
+### GDP Volatility (Economic Stability)
 
 **Formula:**
 
-\[
-GDP\_Volatility = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (GDP_i - \bar{GDP})^2}
-\]
+$$
+\text{GDP Volatility}
+=
+\sqrt{
+\frac{1}{N}
+\sum_{i=1}^{N}
+\left(
+\text{GDP}_i - \overline{\text{GDP}}
+\right)^2
+}
+$$
 
 **Explanation:**  
 Measures how unstable or volatile an economy is over time.  
 Higher values indicate stronger economic fluctuations.
 
 ---
-
-### 6️⃣ Inflation Trend Direction
-
-**Formula:**
-
-\[
-Inflation\_Trend = Inflation_{last} - Inflation_{first}
-\]
-
-**Explanation:**  
-A simple slope approximation indicating whether inflation is trending upward or downward over the observed period.
-
----
-
-### 7️⃣ Crisis Year Count
+### Crisis Year Count
 
 **Definition:**  
 A year is classified as a **crisis year** if:
 
-\[
-GDP\_Growth_t < 0
-\]
+$$
+\text{GDP Growth}_t < 0
+$$
 
 **Explanation:**  
 Counts the number of years in which an economy experienced contraction.  
 Used as an indicator of economic vulnerability.
 
 ---
+
 
 ## 🧭 Conclusion
 
