@@ -50,27 +50,29 @@ The project provides:
 
 
 - Global GDP growth trend with recession indicators
-- ![](outputs/png/global_gdp_growth_trend.png)
+![](outputs/png/global_gdp_growth_trend.png)
+
 
 ### 🌎 Country Comparison
 - Top countries by average GDP
-- ![](outputs/png/top_countries_avg_gdp.png)
+![](outputs/png/top_countries_avg_gdp.png)
 
 
 - Countries with the highest number of crisis years
-- ![](outputs/png/crisis_years_by_country.png)
+![](outputs/png/crisis_years_by_country.png)
+
 
 ### 🔍 Country Case Study
 - GDP vs rolling average for a selected country  
-- ![](outputs/png/country_gdp_trend_TR.png)
+![](outputs/png/country_gdp_trend_TR.png)
 
 
 - Inflation vs rolling average for a selected country
-- ![](outputs/png/country_inflation_trend_TR.png)
+![](outputs/png/country_inflation_trend_TR.png)
 
 
 - Interactive Dashboard Demo
-- ![](docs/demo.gif)
+![](docs/demo.gif)
 
 
 ### 🌐 Interactive Dashboard
