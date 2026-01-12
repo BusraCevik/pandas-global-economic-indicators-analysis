@@ -56,10 +56,10 @@ def create_intermediate_dataset(input_path, output_path, rolling_window=5):
 
     df = pd.read_csv(input_path)
 
-    # 🔒 Year MUST already be clean integer here
+
     df["Year"] = df["Year"].astype(int)
 
-    # Sort ONLY by integer year
+
     df = df.sort_values(["Country_ID", "Year"])
 
     # GDP growth rate (%)

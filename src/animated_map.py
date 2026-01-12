@@ -44,7 +44,7 @@ def _standard_layout(fig, y_title=None):
         )
     )
 
-    # dış çerçeve
+
     fig.add_shape(
         type="rect",
         xref="paper",

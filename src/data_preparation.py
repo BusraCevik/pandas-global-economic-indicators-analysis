@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-import pycountry
+
 
 
 def prepare_data(input_path, output_path, drop_na=True, fill_method=None, save_cleaned=True):
@@ -26,9 +26,7 @@ def prepare_data(input_path, output_path, drop_na=True, fill_method=None, save_c
         'Public Debt (% of GDP)': 'Public_Debt'
     }, inplace=True)
 
-    # -----------------------------
-    # Year FIX (NO datetime)
-    # -----------------------------
+
     df["Year"] = pd.to_numeric(df["Year"], errors="coerce")
 
     # keep only realistic years
@@ -68,4 +66,4 @@ def prepare_data(input_path, output_path, drop_na=True, fill_method=None, save_c
 
     return df
 
-    return df
+
