@@ -8,7 +8,7 @@ import plotly.io as pio
 
 
 # -----------------------------
-# Global style (pastel turquoise)
+# Colors
 # -----------------------------
 MAIN_COLOR = "#5FA8A8"
 LIGHT_COLOR = "#9ED6D6"

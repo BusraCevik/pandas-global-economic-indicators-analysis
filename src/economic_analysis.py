@@ -37,7 +37,7 @@ def create_country_summary(input_path, output_path):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     summary_df.to_csv(output_path, index=False)
 
-    print(f"✅ Country summary saved to: {output_path}")
+    print(f"Country summary saved to: {output_path}")
     return summary_df
 
 
@@ -92,7 +92,7 @@ def create_intermediate_dataset(input_path, output_path, rolling_window=5):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     df.to_csv(output_path, index=False)
 
-    print(f"✅ Intermediate dataset saved to: {output_path}")
+    print(f"Intermediate dataset saved to: {output_path}")
     return df
 
 
@@ -188,7 +188,7 @@ def compute_country_trends(input_path, output_path, recent_years=5):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     trends_df.to_csv(output_path, index=False)
 
-    print(f"✅ Country trends saved to: {output_path}")
+    print(f"Country trends saved to: {output_path}")
     return trends_df
 
 
@@ -198,7 +198,7 @@ def compute_country_trends(input_path, output_path, recent_years=5):
 def analyze_global_trends(input_path, output_path):
     df = pd.read_csv(input_path)
 
-    # 🔒 Year must be integer
+    # Year must be integer
     df["Year"] = df["Year"].astype(int)
 
     # Sort by year
@@ -216,6 +216,6 @@ def analyze_global_trends(input_path, output_path):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     global_df.to_csv(output_path, index=False)
 
-    print(f"✅ Global trends saved to: {output_path}")
+    print(f"Global trends saved to: {output_path}")
 
     return global_df

@@ -27,7 +27,7 @@ def prepare_data(input_path, output_path, drop_na=True, fill_method=None, save_c
     }, inplace=True)
 
     # -----------------------------
-    # 🚨 Year FIX (NO datetime)
+    # Year FIX (NO datetime)
     # -----------------------------
     df["Year"] = pd.to_numeric(df["Year"], errors="coerce")
 
@@ -64,7 +64,7 @@ def prepare_data(input_path, output_path, drop_na=True, fill_method=None, save_c
     if save_cleaned:
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         df.to_csv(output_path, index=False)
-        print(f"✅ Cleaned data saved to: {output_path}")
+        print(f"Cleaned data saved to: {output_path}")
 
     return df
 
